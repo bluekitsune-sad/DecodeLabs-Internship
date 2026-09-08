@@ -1,0 +1,529 @@
+/* ============================================================
+   Hearth & Crumb — Artisan Bakery
+   Mobile-first, responsive stylesheet.
+   Layout: Flexbox for components, CSS Grid for page sections.
+   ============================================================ */
+
+/* ---------- Design tokens ---------- */
+:root {
+  --mocha: #a68e7a;          /* warm accent */
+  --mocha-strong: #7c614f;   /* darker mocha for accessible buttons */
+  --ethereal: #a0d4e0;       /* soft cool-blue accent */
+  --ethereal-strong: #4a8fa6;/* darker ethereal for focus/links */
+  --moonlit: #f2f0ea;        /* page background */
+  --cream: #fdfcf9;          /* card / surface background */
+  --ink: #3b322c;            /* primary text */
+  --ink-soft: #6b5f57;       /* secondary text */
+
+  --font-display: "Montserrat", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Open Sans", "Arial", system-ui, sans-serif;
+
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 1.5rem;
+  --space-4: 2.5rem;
+  --space-5: 4rem;
+
+  --radius: 0.5rem;
+  --shadow: 0 4px 16px rgba(59, 50, 44, 0.08);
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  line-height: 1.6;
+  color: var(--ink);
+  background-color: var(--moonlit);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 var(--space-2);
+}
+
+h1 {
+  font-size: clamp(2rem, 1rem + 4vw, 3.25rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 1rem + 2vw, 2.25rem);
+}
+
+h3 {
+  font-size: clamp(1.1rem, 1rem + 0.4vw, 1.35rem);
+}
+
+p {
+  margin: 0 0 var(--space-2);
+}
+
+a {
+  color: var(--ethereal-strong);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- Accessibility helpers ---------- */
+.skip-link {
+  position: absolute;
+  left: var(--space-2);
+  top: -3rem;
+  z-index: 100;
+  padding: var(--space-1) var(--space-2);
+  background: var(--cream);
+  color: var(--ink);
+  border-radius: var(--radius);
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: var(--space-2);
+}
+
+:focus-visible {
+  outline: 3px solid var(--ethereal-strong);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ---------- Layout container ---------- */
+.container {
+  width: 100%;
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: var(--space-3);
+}
+
+/* ---------- Header / navigation ---------- */
+.site-header {
+  background: var(--cream);
+  border-bottom: 1px solid rgba(59, 50, 44, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-top: var(--space-2);
+  padding-bottom: var(--space-2);
+}
+
+.brand {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.brand a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+/* Mobile nav toggle (hamburger) */
+.nav-toggle {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0.5rem;
+  background: transparent;
+  border: 1px solid var(--mocha);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--ink);
+  transition: transform 0.2s ease;
+}
+
+/* Mobile nav is hidden by default and revealed by JS */
+.primary-nav {
+  display: none;
+  flex-basis: 100%;
+  margin-top: var(--space-2);
+}
+
+.primary-nav.is-open {
+  display: block;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-list li + li {
+  margin-top: 0.25rem;
+}
+
+.nav-list a {
+  display: block;
+  padding: 0.75rem 0.5rem;
+  color: var(--ink);
+  text-decoration: none;
+  border-radius: var(--radius);
+}
+
+.nav-list a:hover {
+  background: var(--moonlit);
+}
+
+/* ---------- Buttons ---------- */
+.button {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button-primary {
+  background: var(--mocha-strong);
+  color: #fff;
+}
+
+.button-primary:hover,
+.button-primary:focus-visible {
+  background: var(--ink);
+  color: #fff;
+}
+
+.button-secondary {
+  background: transparent;
+  border-color: var(--mocha-strong);
+  color: var(--mocha-strong);
+}
+
+.button-secondary:hover,
+.button-secondary:focus-visible {
+  background: var(--mocha-strong);
+  color: #fff;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background:
+    linear-gradient(180deg, rgba(242, 240, 234, 0) 0%, rgba(242, 240, 234, 1) 100%),
+    var(--ethereal);
+  padding: var(--space-5) 0;
+}
+
+.hero-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+.hero-copy p {
+  color: var(--ink-soft);
+  max-width: 34rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+.hero-card {
+  background: var(--cream);
+  border: 1px solid var(--mocha);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--space-3);
+}
+
+.hero-card-label {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.hero-card-item {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: var(--mocha-strong);
+  margin: 0;
+  padding: 0.4rem 0;
+  border-bottom: 1px dashed rgba(59, 50, 44, 0.15);
+}
+
+/* ---------- Sections ---------- */
+.section {
+  padding: var(--space-5) 0;
+}
+
+.section-tinted {
+  background: var(--cream);
+  border-block: 1px solid rgba(59, 50, 44, 0.08);
+}
+
+.section-intro {
+  color: var(--ink-soft);
+  max-width: 40rem;
+}
+
+/* ---------- Card grid (CSS Grid at larger widths) ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr;   /* mobile: single column */
+  gap: var(--space-3);
+  margin-top: var(--space-3);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;       /* Flexbox inside each card */
+  background: var(--cream);
+  border: 1px solid rgba(59, 50, 44, 0.12);
+  border-left: 4px solid var(--mocha);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  box-shadow: var(--shadow);
+}
+
+.card p {
+  color: var(--ink-soft);
+}
+
+.card-meta {
+  margin-top: auto;             /* pin meta to card bottom */
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--mocha-strong);
+}
+
+/* ---------- About / hours (Grid page layout) ---------- */
+.about-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-3);
+}
+
+.hours-card {
+  background: var(--moonlit);
+  border: 1px solid var(--mocha);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+}
+
+.hours-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.hours-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding: 0.4rem 0;
+  border-bottom: 1px dashed rgba(59, 50, 44, 0.15);
+}
+
+/* ---------- FAQ ---------- */
+.faq-list {
+  margin-top: var(--space-2);
+}
+
+.faq-item {
+  background: var(--cream);
+  border: 1px solid rgba(59, 50, 44, 0.12);
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-3);
+  margin-bottom: var(--space-2);
+}
+
+.faq-item summary {
+  font-family: var(--font-display);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.faq-item p {
+  color: var(--ink-soft);
+}
+
+/* ---------- Visit / contact form ---------- */
+.visit-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+}
+
+.contact-form {
+  background: var(--moonlit);
+  border: 1px solid var(--mocha);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+  box-shadow: var(--shadow);
+}
+
+.form-group {
+  margin-bottom: var(--space-2);
+}
+
+.form-group label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  font: inherit;
+  color: var(--ink);
+  background: var(--cream);
+  border: 1px solid rgba(59, 50, 44, 0.3);
+  border-radius: var(--radius);
+}
+
+.field-error {
+  margin: 0.35rem 0 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #a33c2a;
+}
+
+.form-status {
+  margin: var(--space-2) 0 0;
+  font-weight: 700;
+}
+
+.form-status[hidden] {
+  display: none;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--mocha-strong);
+  color: var(--cream);
+  padding: var(--space-3) 0;
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.footer-inner p {
+  margin: 0;
+}
+
+.footer-note {
+  font-size: 0.9rem;
+  opacity: 0.85;
+}
+
+/* ============================================================
+   TABLET  (>= 768px)
+   ============================================================ */
+@media (min-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .visit-inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* ============================================================
+   DESKTOP (>= 1024px)
+   ============================================================ */
+@media (min-width: 1024px) {
+  .header-inner {
+    flex-wrap: nowrap;
+  }
+
+  /* Hide hamburger, show horizontal nav via Flexbox */
+  .nav-toggle {
+    display: none;
+  }
+
+  .primary-nav {
+    display: flex;
+    flex-basis: auto;
+    margin-top: 0;
+  }
+
+  .nav-list {
+    display: flex;            /* Flexbox for the nav links */
+    gap: var(--space-2);
+  }
+
+  .nav-list li + li {
+    margin-top: 0;
+  }
+
+  .nav-list a {
+    padding: 0.5rem 0.75rem;
+  }
+
+  /* Hero: two-column CSS Grid */
+  .hero-inner {
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+  }
+
+  /* Menu: three-column CSS Grid */
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* About: main content + sidebar (Grid macro layout) */
+  .about-inner {
+    grid-template-columns: 1.5fr 1fr;
+    align-items: start;
+  }
+}
