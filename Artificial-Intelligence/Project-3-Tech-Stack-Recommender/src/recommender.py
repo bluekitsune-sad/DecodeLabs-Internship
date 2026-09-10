@@ -4,7 +4,7 @@ Pipeline:
   User Profile -> Feature Extraction -> TF-IDF Vector -> Cosine Similarity
   -> Scoring -> Sorting (descending) -> Filtering -> Top 3
 
-Uses content-based filtering only (no collaborative filtering, no LLM).
+Uses content-based filtering to rank job roles by skill similarity.
 """
 
 import re

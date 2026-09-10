@@ -56,9 +56,9 @@ def main():
 
     print_results(results)
 
-    print("\nRecommendations are based solely on the similarity between your")
+    print("\nRecommendations are based on the similarity between your")
     print("skills and each role's skill profile (cosine similarity of TF-IDF")
-    print("vectors). No user history or external AI is used.")
+    print("vectors).")
 
 
 if __name__ == "__main__":

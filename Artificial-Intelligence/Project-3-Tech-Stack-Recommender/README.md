@@ -24,8 +24,8 @@ TF-IDF Vectorization
 + Top-3 Filtering
 ```
 
-The system is **content-based filtering only** — no collaborative filtering,
-no LLM, no external AI service.
+The system uses **content-based filtering** to rank job roles by skill
+similarity.
 
 ## Content-Based Filtering
 
@@ -205,9 +205,8 @@ Rank  Recommendation            Similarity
 2     Backend Developer         32.0%  (0.320)
 3     Security Analyst          17.5%  (0.175)
 
-Recommendations are based solely on the similarity between your
-skills and each role's skill profile (cosine similarity of TF-IDF
-vectors). No user history or external AI is used.
+Recommendations are based on the similarity between your skills and each
+role's skill profile (cosine similarity of TF-IDF vectors).
 ```
 
 ## Project Structure
