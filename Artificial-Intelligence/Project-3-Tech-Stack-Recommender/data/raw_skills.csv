@@ -1,0 +1,13 @@
+role,skills
+"Data Scientist","python, statistics, machine learning, data analysis, pandas, scikit-learn, data visualization, sql"
+"Machine Learning Engineer","python, machine learning, tensorflow, pytorch, deep learning, mlops, model deployment"
+"Data Engineer","python, sql, etl, data pipelines, spark, aws, data warehouses"
+"Backend Developer","python, java, node, sql, rest api, databases, docker, system design"
+"Frontend Developer","javascript, html, css, react, web design, ui, accessibility, responsive design"
+"Full Stack Developer","javascript, python, node, html, css, rest api, databases, cloud"
+"DevOps Engineer","linux, docker, kubernetes, ci cd, automation, cloud, terraform, monitoring"
+"Cloud Engineer","aws, cloud computing, azure, gcp, networking, virtualization, infrastructure"
+"System Administrator","linux, windows server, networking, shell scripting, automation, security, backups"
+"Network Engineer","networking, tcp ip, routing, switching, security, firewall"
+"Security Analyst","security, penetration testing, networking, linux, vulnerability assessment, monitoring"
+"Web Developer","html, css, javascript, web design, responsive design, seo, accessibility"

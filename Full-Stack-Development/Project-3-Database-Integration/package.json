@@ -1,0 +1,21 @@
+{
+  "name": "decodelabs-project-3-database-integration",
+  "version": "1.0.0",
+  "description": "Persistent CRUD REST API (SQLite) for the DecodeLabs Full Stack internship - Project 3.",
+  "main": "src/server.js",
+  "private": true,
+  "scripts": {
+    "start": "node src/server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.10.0",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "supertest": "^7.0.0"
+  }
+}

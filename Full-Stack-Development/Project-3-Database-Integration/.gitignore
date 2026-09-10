@@ -1,0 +1,12 @@
+node_modules/
+.env
+*.log
+coverage/
+
+# Local database files
+data/*.db
+data/*.db-*
+
+.DS_Store
+.idea/
+.vscode/
